@@ -29,7 +29,7 @@ const targets = args.filter((a, i) => !a.startsWith('--') && (maxIdx === -1 || i
 // 기본 대상: 라우트 + 컴포넌트 + 카피 상수 (사전·택소노미 데이터 자체는 자기참조라 제외)
 const DEFAULT_TARGETS = ['app', 'src/components', 'src/data/contents.js', 'src/data/verbalIdentity.js'];
 const EXCLUDE = /TaxonomyData\.js$|node_modules|\.next|\.stories\.jsx$|slideTitleMap\.json$/;
-const EXTS = new Set(['.js', '.jsx', '.ts', '.tsx', '.css']);
+const EXTS = new Set(['.js', '.jsx', '.ts', '.tsx', '.css', '.html', '.vue', '.svelte', '.astro']);
 
 function collectFiles(target) {
   const abs = path.resolve(ROOT, target);

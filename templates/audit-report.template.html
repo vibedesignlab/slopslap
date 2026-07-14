@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<!--
+  slop-auditor 점검 보고서 고정 템플릿 (v2)
+  - 이 구조는 계약이다: 섹션 추가·삭제·순서 변경 금지. {{...}} 자리만 채운다.
+  - 레이어 표는 반드시 5행 전부. 빈 칸 = 그 축 미수행 = 판정 무효.
+  - Top 카드 블록(.fix)은 항목 수만큼 복제(3~5개). 각 카드에 SSOT id·severity·사다리·증거·처방·기대효과·3초 테스트 전부 필수.
+  - v2: 판정 블록에 시그니처 카운트({{SIGNATURE_COUNT}}) 행, .fix 에 3초 테스트({{THREE_SEC}}) 행 추가.
+    Top 세트에 3초 '예' 0개면 .fix 블록들 대신 정직 출구 문장을 {{NO_FIX_EXIT}} 위치에 쓴다.
+  - v2.1: 타이포 처방표 섹션 추가(L4/L5 플래그 시 역할별 행 복제 의무, 무플래그면 "해당 없음" 1줄).
+  - v2.2: 레이아웃 처방표 섹션 추가(L2/L3 플래그 시 의무, 타이포 처방표보다 상류. 여백 직접 조절 처방 금지).
+  - v2.3: 타이포 처방표 첫 행 = 스케일 선언(base x r) 의무, 레이아웃 처방표 간격 행 = 래더 선언(4/8 베이스 + 티어) 의무.
+    선언 없이 개별 값만 나열된 처방표는 무효. 절대 대역·임계의 원본은 SSOT 조작정의(1440px 계산값 기준).
+  - v3: 판정 블록에 컨셉 선언({{CONCEPT}}) + 도출 3행(색 체계/레이아웃 타입/섹션 리듬) 추가 - 선언 없으면 판정 무효.
+    재설계 처방표 섹션 신설(foundation 텔 발화 시 의무, 레이아웃 처방표보다 상류). ladder class 에 redesign 추가.
+  - v3.1: baseline diff 모드 - 컨셉 선언은 baseline.md 인용, 도출 행 기준값 = baseline 수치, 판정은 예/아니오
+    이진만(회색 판정·전가 대체 무효). 스토리보드 밀도 열은 수치(뷰포트당 아이디어 수·핵심 이미지 %W) 의무.
+  - 같은 내용의 audit-report.md 를 항상 쌍으로 생성한다.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>슬롭 점검 — {{SCOPE}} / {{ROUND}}</title>
+<style>
+  :root { --paper:#f6f3ea; --ink:#17170f; --muted:#5c6154; --line:#17170f; --lime:#c7ff33;
+    --coral:#ff6a4d; --ok:#1f7a4d; --warn:#a8631a; --bad:#b23524; --card:#fffdf6; --paper2:#efe9d9; }
+  @media (prefers-color-scheme: dark) { :root { --paper:#14150f; --ink:#f2efe4; --muted:#a3a693;
+    --line:#3a3d30; --card:#1d1f16; --paper2:#1b1d15; --ok:#57c98a; --warn:#d69a4a; --bad:#e0715c; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif; line-height:1.6; }
+  .wrap { max-width:920px; margin:0 auto; padding:clamp(24px,5vw,64px) clamp(18px,4vw,40px) 96px; }
+  header.masthead { border-bottom:3px solid var(--line); padding-bottom:20px; margin-bottom:28px; }
+  .eyebrow { font-family:ui-monospace,Menlo,monospace; font-size:.72rem; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--muted); margin:0 0 10px; }
+  h1 { font-family:Georgia,serif; font-size:clamp(1.8rem,4.5vw,2.8rem); line-height:1.05; margin:0 0 6px; font-weight:800; }
+  h2 { font-family:Georgia,serif; font-size:1.4rem; font-weight:800; margin:44px 0 14px; padding-top:20px; border-top:2px solid var(--line); }
+  p { margin:0 0 12px; }
+  .verdict { display:flex; flex-wrap:wrap; align-items:center; gap:14px; padding:18px 22px;
+    border:2px solid var(--line); background:var(--card); box-shadow:6px 6px 0 var(--line); margin:0 0 18px; }
+  .badge { font-family:ui-monospace,monospace; font-weight:800; font-size:.85rem; padding:5px 12px;
+    border:2px solid var(--line); border-radius:999px; white-space:nowrap; }
+  .badge.strong { background:var(--bad); color:#fff; } .badge.weak { background:var(--warn); color:#fff; }
+  .badge.no { background:var(--ok); color:#fff; }
+  .verdict .why { flex:1 1 280px; min-width:240px; margin:0; font-size:.96rem; }
+  .rule { font-family:ui-monospace,monospace; font-size:.78rem; color:var(--muted); margin:2px 0 0; }
+  table { width:100%; border-collapse:collapse; font-size:.9rem; margin:0 0 8px; }
+  th, td { border:1.5px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:var(--paper2); font-family:ui-monospace,monospace; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; }
+  td.pass { color:var(--ok); font-weight:800; } td.fail { color:var(--bad); font-weight:800; }
+  .fix { border:2px solid var(--line); background:var(--card); padding:16px 18px; margin:0 0 14px; box-shadow:4px 4px 0 var(--line); }
+  .fix .rank { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+  .fix .n { font-family:Georgia,serif; font-size:1.4rem; font-weight:800; }
+  .fix .id { font-family:ui-monospace,monospace; font-size:.8rem; color:var(--coral); font-weight:700; }
+  .fix .sev { font-family:ui-monospace,monospace; font-size:.7rem; color:var(--muted); }
+  .ladder { font-family:ui-monospace,monospace; font-size:.72rem; font-weight:800; padding:3px 9px;
+    border:1.5px solid var(--line); border-radius:4px; }
+  .ladder.redesign { background:var(--ink); color:var(--paper); } .ladder.del { background:var(--bad); color:#fff; }
+  .ladder.reduce { background:var(--warn); color:#fff; } .ladder.replace { background:transparent; }
+  .fix dl { display:grid; grid-template-columns:max-content 1fr; gap:4px 14px; margin:8px 0 0; font-size:.88rem; }
+  .fix dt { color:var(--muted); font-family:ui-monospace,monospace; font-size:.72rem; padding-top:2px; }
+  .fix dd { margin:0; }
+  code { font-family:ui-monospace,Menlo,monospace; font-size:.85em; background:var(--paper2); padding:1px 5px; border-radius:3px; word-break:break-word; }
+  .note { color:var(--muted); font-size:.87rem; }
+  footer { margin-top:44px; padding-top:14px; border-top:2px solid var(--line); color:var(--muted); font-size:.8rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">AI-slop 점검 · {{ROUND}} · {{DATE}} · 택소노미 {{TAXONOMY_VERSION}}</p>
+    <h1>{{SCOPE}}</h1>
+    <p class="note">점검자: slop-auditor ({{MODEL}}) · read-only · 대상: <code>{{TARGET_PATH}}</code></p>
+  </header>
+
+  <div class="verdict">
+    <!-- badge class: strong=AI로 읽힘(강) / weak=AI로 읽힘(약) / no=아니오 -->
+    <span class="badge {{VERDICT_CLASS}}">{{VERDICT}}</span>
+    <p class="why">{{VERDICT_REASON}}</p>
+    <p class="rule">경계조건: {{BOUNDARY_CONDITION}}{{MITIGATION}}</p>
+    <p class="rule">미디언 유니폼: 시그니처 카운트 {{SIGNATURE_COUNT}} (도출 필터 통과분만) · {{SIGNATURE_MOVES}}</p>
+  </div>
+
+  <h2>컨셉-표현 정합 <span class="note" style="font-weight:400">(최상단 검사 · 선언 없으면 판정 무효)</span></h2>
+  <p><strong>컨셉 선언:</strong> {{CONCEPT}}</p>
+  <table>
+    <tr><th>도출 축</th><th>현재 결정</th><th>컨셉에서 도출되는가</th><th>판정</th></tr>
+    <tr><td>색 체계</td><td>{{DERIVE_COLOR_CURRENT}}</td><td>{{DERIVE_COLOR_YN}}</td><td class="{{DERIVE_COLOR_CLASS}}">{{DERIVE_COLOR_VERDICT}}</td></tr>
+    <tr><td>레이아웃 타입 (읽기 모드)</td><td>{{DERIVE_LAYOUT_CURRENT}}</td><td>{{DERIVE_LAYOUT_YN}}</td><td class="{{DERIVE_LAYOUT_CLASS}}">{{DERIVE_LAYOUT_VERDICT}}</td></tr>
+    <tr><td>섹션 리듬</td><td>{{DERIVE_RHYTHM_CURRENT}}</td><td>{{DERIVE_RHYTHM_YN}}</td><td class="{{DERIVE_RHYTHM_CLASS}}">{{DERIVE_RHYTHM_VERDICT}}</td></tr>
+  </table>
+
+  <h2>0단계 레이어 점검 <span class="note" style="font-weight:400">(의존성 순서 · 전 축 필수 · 빈 행 = 미수행 = 판정 무효)</span></h2>
+  <table>
+    <tr><th>레이어</th><th>무엇을 쟀나</th><th>실측값</th><th>판정</th></tr>
+    <tr><td>콘텐츠: 목차화 역산</td><td>우선순위 목차 → 슬롯 크기가 그 함수인가</td><td>{{L1_MEASURED}}</td><td class="{{L1_CLASS}}">{{L1_VERDICT}}</td></tr>
+    <tr><td>구조: 그리드 규율</td><td>섹션별 분할선 x(%W) 전체 나열 · 일치 · 앵커</td><td>{{L2_MEASURED}}</td><td class="{{L2_CLASS}}">{{L2_VERDICT}}</td></tr>
+    <tr><td>구조: 밀도·호흡</td><td>매크로:마이크로 여백 비 · 동등강조 블록 수</td><td>{{L3_MEASURED}}</td><td class="{{L3_CLASS}}">{{L3_VERDICT}}</td></tr>
+    <tr><td>타이포: 그루핑</td><td>클러스터 전수 내부:사이 비 (최악 기준)</td><td>{{L4_MEASURED}}</td><td class="{{L4_CLASS}}">{{L4_VERDICT}}</td></tr>
+    <tr><td>타이포: 행간</td><td>역할별 line-height · 범위 밖/산개 개별 플래그</td><td>{{L5_MEASURED}}</td><td class="{{L5_CLASS}}">{{L5_VERDICT}}</td></tr>
+  </table>
+
+  <h2>과감한 수정안 Top {{TOP_COUNT}} <span class="note" style="font-weight:400">(체감 순 · 수정은 위에서부터)</span></h2>
+
+  <!-- BEGIN 반복 블록: 항목 수(3~5)만큼 복제. ladder class: del=삭제 / reduce=축소 / replace=교체 -->
+  <div class="fix">
+    <div class="rank">
+      <span class="n">{{N}}</span>
+      <span class="id">{{SSOT_ID}}</span>
+      <span class="sev">{{SEVERITY}}</span>
+      <span class="ladder {{LADDER_CLASS}}">{{LADDER}}</span>
+      {{PROVISIONAL_TAG}} <!-- 하류 의존 시: <span class="note">잠정</span>, 아니면 빈 문자열 -->
+    </div>
+    <dl>
+      <dt>증거</dt><dd>{{EVIDENCE_FILE_LINE}}</dd>
+      <dt>처방</dt><dd>{{PRESCRIPTION}} <span class="note">(정량 목표: {{QUANT_TARGET}})</span></dd>
+      <dt>기대효과</dt><dd>{{EXPECTED_EFFECT}}</dd>
+      <dt>3초 테스트</dt><dd>{{THREE_SEC}}</dd>
+    </dl>
+  </div>
+  <!-- END 반복 블록. 3초 '예' 0개면 위 블록들 대신: <p class="why">{{NO_FIX_EXIT}}</p> -->
+
+  <h2>재설계 처방표 <span class="note" style="font-weight:400">(foundation 텔 발화 시 의무 · 미발화면 "해당 없음" 1줄 · 모든 처방표의 최상류)</span></h2>
+  <!-- 발화 시: 두 하위 표 모두. 미발화 시: <p class="note">해당 없음 (foundation 텔 없음)</p> -->
+  <p class="note">시맨틱 팔레트 (역할 기반 재도색 - "색 삭제" 문구 금지)</p>
+  <table>
+    <tr><th>역할</th><th>현재 (hue 나열)</th><th>목표 색</th><th>도출 근거 (컨셉 문장에서)</th></tr>
+    <tr><td>{{PAL_ROLE}}</td><td>{{PAL_CURRENT}}</td><td>{{PAL_TARGET}}</td><td>{{PAL_RATIONALE}}</td></tr>
+  </table>
+  <p class="note">섹션 스토리보드 (읽기 모드 선언에서 타입 도출 - bare "fluid로 변경" 금지)</p>
+  <table>
+    <tr><th>섹션</th><th>아이디어 1개</th><th>목표 밀도 (1뷰포트)</th><th>트랙/타입</th></tr>
+    <tr><td>{{SB_SECTION}}</td><td>{{SB_IDEA}}</td><td>{{SB_DENSITY}}</td><td>{{SB_TRACK}}</td></tr>
+  </table>
+
+  <h2>레이아웃 처방표 <span class="note" style="font-weight:400">(L2/L3 플래그 시 의무 · 여백 직접 조절 처방 금지 · 무플래그면 "해당 없음" 1줄)</span></h2>
+  <!-- 플래그 시: 축(타입 선언/분할 스킴/배치 규칙/간격 스케일)별 행 복제. 무플래그 시: <p class="note">해당 없음 (L2/L3 무플래그)</p> -->
+  <table>
+    <tr><th>축</th><th>현재 (실측·판독)</th><th>목표</th><th>근거</th></tr>
+    <tr><td>{{LAYOUT_AXIS}}</td><td>{{LAYOUT_CURRENT}}</td><td>{{LAYOUT_TARGET}}</td><td>{{LAYOUT_RATIONALE}}</td></tr>
+  </table>
+
+  <h2>타이포 처방표 <span class="note" style="font-weight:400">(L4/L5 플래그 시 의무 · 무플래그면 "해당 없음" 1줄)</span></h2>
+  <!-- 플래그 시: 행을 역할 수만큼 복제. 무플래그 시: 표 대신 <p class="note">해당 없음 (L4/L5 무플래그)</p> -->
+  <table>
+    <tr><th>역할</th><th>현재 (size / lh / ls / margin 위·아래)</th><th>목표 (수치)</th><th>근거</th></tr>
+    <tr><td>{{TYPO_ROLE}}</td><td>{{TYPO_CURRENT}}</td><td>{{TYPO_TARGET}}</td><td>{{TYPO_RATIONALE}}</td></tr>
+  </table>
+
+  <h2>위생 <span class="note" style="font-weight:400">(최대 1줄)</span></h2>
+  <p class="note">{{HYGIENE_LINE}}</p>
+
+  <h2>미등재 관찰</h2>
+  <p class="note">{{UNLISTED_OBSERVATIONS}}</p>
+
+  <footer>
+    읽은 파일: {{FILES_READ}} · 스캐너: {{SCANNER_STATUS}} · 쌍 파일: <code>audit-report.md</code>
+  </footer>
+
+</div>
+</body>
+</html>
