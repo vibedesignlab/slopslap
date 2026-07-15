@@ -1,58 +1,49 @@
 # slop-toolkit-test
 
-`slop-auditor`(점검 에이전트) + `slop-fix`(수정 스킬)를 **격리해서 테스트**하는 독립 프로젝트. 원본 레포(vibe-design-starter-kit)와 무관하게 자체 완결로 돈다. 모든 경로는 이 프로젝트 기준 상대경로.
+`slop-quick` 스킬을 **격리해서 테스트**하는 독립 프로젝트. 대상 화면(스택 불문)의 AI-slop 을 문답 없이 병렬-점검 파이프라인으로 걷어낸다.
 
 ## 구조
 
 ```
-.claude/
-  agents/slop-auditor.md            # 점검 에이전트 (read-only. 기본: 계층 진단 브리프 / strict: 전체 리포트)
-  agents/blueprint-author.md        # strict 모드 전용 블라인드 기준선 작성자
-  agents/prescription-fidelity-verifier.md  # strict 모드 전용 처방 충실도 검증자
-  skills/slop-fix/SKILL.md          # 수정 스킬 (계층별 사용자 문답: 콘텐츠(심문·트리·상수화) → 레이아웃 → 타이포 → 컬러)
-  skills/stable-layout/             # 레이아웃 판단 참조
+.claude/skills/slop-quick/
+  SKILL.md                          # 파이프라인 지휘 (얇은 오케스트레이터)
+  references/inspection-areas.md    # 영역별 점검·집행 규칙 SSOT + findings 스키마(check 술어)
 scripts/
   scan-slop-signals.mjs             # 택소노미 detect 신호 스캐너 (js/ts/css/html/vue/svelte/astro)
-  scan-layer-signals.mjs            # 구조 층 신호 스캐너 (js 전용, 위생 패스)
+  build-findings-report.mjs         # findings-*.md → 자기완결 HTML 리포트 (로컬 서버 링크)
 src/data/
-  aiSlopTaxonomyData.js             # SSOT (버전·항목 수는 파일 헤더 changelog 가 원본)
-  layoutTaxonomyData.js             # 레이아웃 아키타입 판단용
-templates/
-  audit-report.template.html        # strict 모드 리포트 템플릿
-test-targets/
-  aprilpm-clone/                    # 샘플 점검 대상 (정적 HTML+CSS)
+  aiSlopTaxonomyData.js             # AI-slop 택소노미 SSOT (버전·항목 수는 파일 헤더 changelog)
 ```
 
-## 테스트 방법
+## 파이프라인 (6단계)
 
-### 1. 스캐너 단독 (기계 패스만)
-```bash
-node scripts/scan-slop-signals.mjs test-targets/aprilpm-clone
-node scripts/scan-layer-signals.mjs test-targets/aprilpm-clone
-```
+| 단계 | 내용 |
+|---|---|
+| **0. 선행 판정 (1회)** | 콘텐츠 상수화(반복 시리즈 배열 식별) + BOLD 게이트(투박한 스타일 ∧ 저밀도) → 플래그로 하류 전달 |
+| **1. 병렬 정적 점검** | 5개 영역(A 오버라인 · B 레이아웃·컨테이너·폭 · C 간격 · D 타이포 · E 색) 동시 → `findings-<X>.md`, 각 항목에 `check` 술어 |
+| **2. 리포트** | findings 합본 HTML + `http://localhost:<포트>/report/` 로컬 링크 |
+| **3. 순차 집행** | A→B→C→D→E 순서, 집행자가 `check` 를 소스 실측 → 미충족만 수정 (커밋 단위) |
+| **4. 병렬 재점검** | 같은 `check` 재실측 → 누락 시 그 영역만 재집행 |
+| **5. 렌더 1회** | before/after 헤드리스 캡처로 체감 확인 |
 
-### 2. 에이전트로 점검 (Claude Code)
-이 폴더에서 Claude Code를 열면 `slop-auditor` 에이전트와 `/slop-fix` 스킬이 자동 등록된다.
-- 점검만: "test-targets/aprilpm-clone 슬롭 점검해" -> slop-auditor 가 계층 1→2→3→4 브리프(`brief-all.md`)를 낸다
-- 점검+수정: "/slop-fix" -> 계층별 문답 플로우 (콘텐츠 확정(심문·목차 트리·상수화) → 레이아웃 확정 → 타이포 확정 → 컬러 확정, 계층마다 stage 파일 상수화 + 성공 확인)
-- 무인 전체 리포트·파이프라인 검증: strict 모드 명시 디스패치 (SKILL.md 별첨 A)
+## 사용법
 
-새 점검 대상을 넣으려면 `test-targets/` 에 사이트를 복사한다.
+이 폴더에서 Claude Code 를 열면 `/slop-quick` 스킬이 등록된다.
+- 점검+수정: `"이 화면 슬롭 점검하고 고쳐"` 또는 `/slop-quick <대상 경로>` → 파이프라인 실행
+- 스캐너 단독: `node scripts/scan-slop-signals.mjs <경로> --json`
+- 점검 대상은 임의 경로(정적 HTML+CSS / Next·MUI / Tailwind / Vue 등)를 지정한다. **점검 예제는 이 레포에 두지 않는다** — 격리 작업본에서 돌린다.
 
-## 기대 동작 (검증 포인트)
+## 핵심 원칙 (검증 포인트)
 
-- 기본 흐름이 **계층 순서(콘텐츠 → 레이아웃 → 타이포 → 컬러)의 사용자 문답**으로 진행되고, 확정값이 `stage<N>-*.md` 로 상수화되는가
-- 계층 1 이 **심문(애매 카피의 해석 확인) + 목차 트리**를 산출하고, 하류가 트리 밖 섹션을 발명하지 않는가 (섹션 통합·삭제는 상류 개정 제안으로 올라오는가)
-- **계층 진단 보고서가 문답보다 먼저** 오는가 (로드맵 위치·총평·축 표·문제+증거·전략 프레임 - 보고서 없이 질문 직행 = 위반)
-- 문답이 **전략 승인 → 축 캐스케이드 → 파생**으로 진행되고, 모든 질문에 위치 태그 + 상류 확정 인용 + "이 답이 결정하는 것"이 붙는가
-- 재설계 허용 회차에서 **위반 증거가 표본 2~3개로 프루닝**되고 전수 실측이 회귀 단계로 이연되는가 (결정 입력 수치는 여전히 실측)
-- 브리프의 수치가 **리터럴 실측(file:line)과 판독(`판독:` 표기)으로 구분**되어 있는가
-- 처방이 **재설계 > 삭제 > 축소 > 교체** 사다리로, 삭제를 과감히 제안하는가
-- 각 계층 적용 후 **성공 확인이 기록**되는가 (계층 1 = 트리 승인, 계층 2~4 = before/after 3초 테스트)
-- px->rem 같은 **코드 위생은 부록으로 강등**되고 헤드라인을 차지하지 않는가 (행간·자간·그루핑은 위생이 아님)
-- 카피 공식·기믹·템플릿 게슈탈트를 **코드 신호보다 우선**으로 잡는가
+- **컨텍스트 용량 드롭 방지**: 한 에이전트가 전 규칙을 들면 묻힌 규칙이 조용히 누락된다(실증) → 영역별 서브에이전트 격리 + findings 파일 외부화 + 지휘자는 오케스트레이션만.
+- **점검표 = 평가 함수**: findings 항목은 "완료" 상태를 적지 않고 소스에서 참/거짓 실측할 `check` 술어를 가진다. 집행·재점검이 매번 소스에서 계산 → "완료" 오기록에 속아 스킵하는 실패 차단.
+- **상류 단일 판정**: 콘텐츠 상수화·BOLD 게이트는 0단계에서 1회, 하류 영역은 플래그만 소비(판단 중복·불일치 방지).
+- **값은 도출**: 고정 px 금지. 간격은 대상서 도출한 base × 고정 배수, 폭은 단일 measure 토큰(하모닉 배수).
+- **BOLD 게이트**: 투박한 스타일 어휘(두꺼운 border·hard-shadow·flat 원색·초대형 볼드) ∧ 저밀도(관대 — AI 는 불필요하게 고밀도로 채우므로)일 때만 요소·간격을 과감히 ↑. 아니면 순수 슬롭 제거. 매크로 여백 무차별 확대 금지(죽은 void).
+- **리덕티브**: 재설계가 아니라 삭제 > 축소 > 교체. 카피·정보·순서 불가침. 원본 파일 미변경(격리 작업본에서 수정).
+- **문제 층위 분리 진단**: 누락이 생기면 규칙 → 점검표(check) → 집행 → 렌더 4층위로 갈라 어디서 터졌는지 확정한다.
 
 ## 주의
 
-- 에이전트/스킬은 이 프로젝트에 귀속(전역 등록 아님). 다른 데서 안 뜬다.
-- 스캐너 기본 대상은 `app/` + `src/components` 이므로, 외부 타깃은 경로를 명시해 실행한다.
+- 스킬은 이 프로젝트에 귀속(전역 등록 아님).
+- 점검은 정적 계산(playwright 없이), 브라우저는 5단계 렌더에서만.
