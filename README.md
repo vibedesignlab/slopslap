@@ -1,6 +1,8 @@
-# slop-toolkit-test
+# slopslap
 
-`slopslap` 스킬을 **격리해서 테스트**하는 독립 프로젝트. 대상 화면(스택 불문)의 AI-slop 을 문답 없이 병렬-점검 파이프라인으로 걷어낸다.
+> **Slap the slop out of your UI.**
+
+대상 화면(스택 불문)의 AI-slop 을 문답 없이 병렬-점검 파이프라인으로 걷어내는 **Claude Code 스킬(plugin)**. AI 가 만든 티(반사적 오버라인·규율 없는 그리드·과밀 간격·장식 이탤릭·무지개 색)를 5개 영역 서브에이전트로 병렬 점검하고 기계적으로 제거한다.
 
 ## 구조
 
@@ -28,14 +30,15 @@ src/data/
 
 ## 설치
 
-**Claude Code plugin (배포 후):**
+Claude Code 에서 세 줄이면 끝:
 ```
 /plugin marketplace add groovelb/slopslap
 /plugin install slopslap@groovelb-slop
+/slopslap
 ```
-**로컬 개발:** 이 폴더에서 Claude Code 를 열면 `/slopslap` 스킬이 자동 등록된다.
+로컬에서 직접 실행하려면: `claude --plugin-dir .` (또는 이 폴더에서 Claude Code 를 열면 `/slopslap` 자동 등록).
 
-배포 절차·경로 치환(`${CLAUDE_PLUGIN_ROOT}`)은 **[DEPLOY.md](DEPLOY.md)** 참조.
+업데이트: `/plugin update slopslap@groovelb-slop` · 배포·경로 치환(`${CLAUDE_PLUGIN_ROOT}`) 절차는 **[DEPLOY.md](DEPLOY.md)** 참조.
 
 ## 사용법
 
