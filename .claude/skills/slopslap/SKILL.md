@@ -32,7 +32,7 @@ description: 대상 화면(스택 불문)의 AI-slop 을 문답 없이 걷어내
 
 ### 1. 병렬 정적 점검 (한 메시지에 5개 동시 디스패치)
 영역별 서브에이전트 5개를 **동시에** 띄운다. 각 디스패치 프롬프트(얇게):
-- 대상 경로·스택·토큰 위치, 회차 폴더, **`BOLD=on/off` 플래그**(0단계 확정값 — B·C 집행자는 이 플래그만 보고 스케일업 여부 결정, 재판정 금지), SSOT 경로(`src/data/aiSlopTaxonomyData.js`), 스캐너(`node scripts/scan-slop-signals.mjs <경로> --json`)
+- 대상 경로·스택·토큰 위치, 회차 폴더, **`BOLD=on/off` 플래그**(0단계 확정값 — B·C 집행자는 이 플래그만 보고 스케일업 여부 결정, 재판정 금지), SSOT 경로(`${CLAUDE_PLUGIN_ROOT}/src/data/aiSlopTaxonomyData.js`), 스캐너(`node ${CLAUDE_PLUGIN_ROOT}/scripts/scan-slop-signals.mjs <경로> --json`)
 - **"references/inspection-areas.md 의 영역 <X> 절만 읽고, 그 규칙으로 대상을 정적으로 점검해 `findings-<X>.md` 를 스키마대로 써라."**
 - **정적/계산만** (CSS·DOM 읽기, hex 대비 수학, 그리드 fr·간격 리터럴, 폰트 역할맵, 100vh 콘텐츠 높이 합산). **playwright/브라우저 금지**(싱글턴 충돌 + 점검엔 불필요 - 렌더 없던 시절 방식). read-only.
 - findings 는 영역별 **별도 파일** → 병렬 쓰기 안전.
