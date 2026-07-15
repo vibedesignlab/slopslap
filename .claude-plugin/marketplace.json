@@ -1,0 +1,16 @@
+{
+  "name": "groovelb-slop",
+  "owner": {
+    "name": "groovelb",
+    "email": "groovelb@gmail.com"
+  },
+  "description": "AI-slop 제거 도구 모음 — Slap the slop out of your UI.",
+  "plugins": [
+    {
+      "name": "slopslap",
+      "source": ".",
+      "description": "AI-slop 을 병렬-점검 파이프라인으로 걷어내는 스킬. Slap the slop out of your UI.",
+      "keywords": ["ai-slop", "design-qa", "layout", "typography"]
+    }
+  ]
+}

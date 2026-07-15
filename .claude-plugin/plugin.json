@@ -1,6 +1,6 @@
 {
-  "name": "slop-quick",
-  "displayName": "Slop Quick",
+  "name": "slopslap",
+  "displayName": "Slopslap",
   "version": "1.0.0",
   "description": "대상 화면(스택 불문)의 AI-slop 을 문답 없이 병렬-점검 파이프라인으로 걷어내는 스킬. 5개 영역(오버라인·레이아웃·간격·타이포·색)을 서브에이전트로 병렬 점검 → 평가함수 점검표(check 술어) → 순차 집행 → 재점검 → 렌더 1회.",
   "author": {

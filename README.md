@@ -1,11 +1,11 @@
 # slop-toolkit-test
 
-`slop-quick` 스킬을 **격리해서 테스트**하는 독립 프로젝트. 대상 화면(스택 불문)의 AI-slop 을 문답 없이 병렬-점검 파이프라인으로 걷어낸다.
+`slopslap` 스킬을 **격리해서 테스트**하는 독립 프로젝트. 대상 화면(스택 불문)의 AI-slop 을 문답 없이 병렬-점검 파이프라인으로 걷어낸다.
 
 ## 구조
 
 ```
-.claude/skills/slop-quick/
+.claude/skills/slopslap/
   SKILL.md                          # 파이프라인 지휘 (얇은 오케스트레이터)
   references/inspection-areas.md    # 영역별 점검·집행 규칙 SSOT + findings 스키마(check 술어)
 scripts/
@@ -30,16 +30,16 @@ src/data/
 
 **Claude Code plugin (배포 후):**
 ```
-/plugin marketplace add groovelb/slop-quick
-/plugin install slop-quick@groovelb-slop
+/plugin marketplace add groovelb/slopslap
+/plugin install slopslap@groovelb-slop
 ```
-**로컬 개발:** 이 폴더에서 Claude Code 를 열면 `/slop-quick` 스킬이 자동 등록된다.
+**로컬 개발:** 이 폴더에서 Claude Code 를 열면 `/slopslap` 스킬이 자동 등록된다.
 
 배포 절차·경로 치환(`${CLAUDE_PLUGIN_ROOT}`)은 **[DEPLOY.md](DEPLOY.md)** 참조.
 
 ## 사용법
 
-- 점검+수정: `"이 화면 슬롭 점검하고 고쳐"` 또는 `/slop-quick <대상 경로>` → 파이프라인 실행
+- 점검+수정: `"이 화면 슬롭 점검하고 고쳐"` 또는 `/slopslap <대상 경로>` → 파이프라인 실행
 - 스캐너 단독: `node scripts/scan-slop-signals.mjs <경로> --json`
 - 점검 대상은 임의 경로(정적 HTML+CSS / Next·MUI / Tailwind / Vue 등)를 지정한다. **점검 예제는 이 레포에 두지 않는다** — 격리 작업본에서 돌린다.
 

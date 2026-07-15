@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// slop-quick 2단계 리포트 빌더.
+// slopslap 2단계 리포트 빌더.
 // findings-<A..E>.md 들을 자기완결 HTML(report/index.html) 로 렌더한다.
 // 외부요청 0, 인라인 CSS. 값(base·배수·대비)은 그대로 노출.
 // usage: node scripts/build-findings-report.mjs <findingsDir> <outHtml> [--target "<라벨>"] [--verifyDir <dir>]
@@ -156,7 +156,7 @@ const sections = areas.map((a) => {
 const html = `<!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>slop-quick 점검 리포트 · ${esc(targetLabel)}</title>
+<title>slopslap 점검 리포트 · ${esc(targetLabel)}</title>
 <style>
 :root{--bg:#0f1115;--panel:#161a21;--line:#252b35;--tx:#e6e9ef;--soft:#9aa3b2;--faint:#6b7280;--brand:#6c9dff;--ok:#21b57a;--miss:#e5484d;--waive:#8a6d3b;}
 @media(prefers-color-scheme:light){:root{--bg:#f7f8fa;--panel:#fff;--line:#e6e9ef;--tx:#1a1d24;--soft:#5a6274;--faint:#8a92a6;}}
@@ -195,7 +195,7 @@ table.sum th{color:var(--faint);font-weight:600;font-size:12px;text-transform:up
 </style></head>
 <body><div class="wrap">
 <header>
-  <h1>slop-quick 점검 리포트</h1>
+  <h1>slopslap 점검 리포트</h1>
   <p class="sub">대상: <b>${esc(targetLabel)}</b> · 5영역 병렬 정적 점검 · 집행 전 findings${verifyDir ? ' + 재점검 반영상태' : ''}</p>
 </header>
 <table class="sum">

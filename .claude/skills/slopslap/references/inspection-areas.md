@@ -1,4 +1,4 @@
-# slop-quick 영역별 점검·집행 규칙 (SSOT)
+# slopslap 영역별 점검·집행 규칙 (SSOT)
 
 각 점검자/집행자는 **자기 영역 절만** Read 한다 (전체를 한 컨텍스트가 들지 않는다 = 용량 드롭 방지). 무엇이 슬롭이고 무엇으로 탈출하는지의 원천은 `src/data/aiSlopTaxonomyData.js` 의 tell/escape 이며, 아래는 그 위에 얹는 영역별 판정·집행 계약이다.
 
