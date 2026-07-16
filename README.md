@@ -74,9 +74,13 @@ scripts/
   scan-slop-signals.mjs             # 택소노미 detect 신호 스캐너 (js/ts/css/html/vue/svelte/astro)
   build-findings-report.mjs         # findings-*.md → 자기완결 HTML 리포트 (레퍼런스 블록 자동 조인)
   fetch-references.mjs              # taxonomy-id → 정량 레퍼런스 조인 CLI (무키·무료·오프라인)
+  capture-reference.mjs            # 실사이트 헤드리스 렌더 → 실측 contract 추출 (transform 매트릭스 수집 장비)
+  fetch-answer.mjs                 # tell → 레퍼런스 매트릭스 답안 유닛 조회 (transform 모드)
+  gen-reference-data.mjs           # 실제 npm 패키지에서 referenceData.js 생성
 src/data/
   aiSlopTaxonomyData.js             # AI-slop 택소노미 SSOT (버전·항목 수는 파일 헤더 changelog)
-  referenceData.js                  # 텔별 정량 레퍼런스 코퍼스 (Tailwind·Radix·WCAG vendoring)
+  referenceData.js                  # 텔별 정량 레퍼런스 코퍼스 (실제 Tailwind·Radix·WCAG 패키지에서 생성)
+  referenceMatrix/                  # transform 모드: 실측 사이트 contract 16유닛(팔레트·타입·간격) + 스크린샷
 ```
 
 </details>
