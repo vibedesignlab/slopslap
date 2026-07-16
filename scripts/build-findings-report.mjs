@@ -7,6 +7,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+// 레퍼런스 코퍼스(taxonomy-id 조인). 없거나 로드 실패해도 리포트는 정상 생성(레퍼런스 블록만 생략).
+let lookupReference = () => null;
+try { ({ lookupReference } = await import(path.join(ROOT, 'src/data/referenceData.js'))); } catch { /* 코퍼스 없으면 무시 */ }
+
 const args = process.argv.slice(2);
 const findingsDir = args[0];
 const outHtml = args[1];
@@ -129,6 +134,24 @@ function badge(txt) {
   return `<span class="badge ${cls}">${esc(txt)}</span>`;
 }
 
+// finding id 에 조인되는 정량 레퍼런스 블록(있을 때만). 삭제형(applies:false)은 "차용값 없음" 으로만 표기.
+function refHtml(id) {
+  const r = lookupReference(id);
+  if (!r) return '';
+  if (r.applies === false) {
+    return `<div class="ref del"><span class="rk">레퍼런스</span><span class="rv">삭제/flatten 형 — 차용값 없음. ${esc(r.principle)}</span></div>`;
+  }
+  const targetStr = r.target ? esc(JSON.stringify(r.target)) : '';
+  const src = r.sourceMeta ? `<a class="rsrc" href="${esc(r.sourceMeta.url)}" target="_blank" rel="noopener">${esc(r.sourceMeta.name)}</a> <span class="rlic">${esc(r.sourceMeta.license)}</span>` : '';
+  const links = (r.exemplars || []).map((e) => `<a class="rex ${esc(e.gate || '')}" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.label)}</a>`).join('');
+  return `<div class="ref">
+    <div class="rrow"><span class="rk">레퍼런스</span><span class="rv">${esc(r.principle)}</span></div>
+    ${targetStr ? `<div class="rrow"><span class="rk">정량 타깃</span><code class="rt">${targetStr}</code></div>` : ''}
+    ${src ? `<div class="rrow"><span class="rk">출처</span><span class="rv">${src}</span></div>` : ''}
+    ${links ? `<div class="rrow"><span class="rk">실앱 예시</span><span class="rv rexs">${links}</span></div>` : ''}
+  </div>`;
+}
+
 const sections = areas.map((a) => {
   const p = parsed[a];
   if (p.missing) {
@@ -144,6 +167,7 @@ const sections = areas.map((a) => {
     return `<article class="card${noop ? ' noop' : ''}">
       <div class="chead"><code class="cid">${esc(it.id)}</code>${vb}${noop ? '<span class="badge noopb">무집행</span>' : ''}<span class="ord">→ ${esc(it.fields['집행순서'] || a)}</span></div>
       ${fieldHtml}
+      ${refHtml(it.id)}
     </article>`;
   }).join('');
   return `<section class="area">
@@ -192,6 +216,18 @@ table.sum th{color:var(--faint);font-weight:600;font-size:12px;text-transform:up
 .badge.waive{background:rgba(138,109,59,.18);color:var(--waive)}
 .badge.noopb{background:var(--line);color:var(--faint)}
 .miss-note{color:var(--faint)}
+.ref{margin-top:12px;padding:12px 14px;border-radius:8px;background:rgba(108,157,255,.06);border:1px solid rgba(108,157,255,.18)}
+.ref.del{background:var(--line);border-color:transparent;opacity:.75}
+.rrow{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:3px 0;align-items:start}
+.rk{color:var(--brand);font-size:11px;font-weight:700;padding-top:2px;text-transform:uppercase;letter-spacing:.03em}
+.ref.del .rk{color:var(--faint)}
+.rv{font-size:13px;color:var(--tx)}
+.rt{display:block;font:11.5px/1.5 "SFMono-Regular",ui-monospace,Menlo,monospace;color:var(--soft);white-space:pre-wrap;word-break:break-word}
+.rsrc{color:var(--brand);text-decoration:none;border-bottom:1px solid rgba(108,157,255,.35)}
+.rlic{color:var(--faint);font-size:11px}
+.rexs{display:flex;flex-wrap:wrap;gap:8px}
+.rex{font-size:12px;color:var(--soft);text-decoration:none;padding:2px 8px;border:1px solid var(--line);border-radius:999px}
+.rex.login::after{content:" ·로그인";color:var(--faint);font-size:10px}
 </style></head>
 <body><div class="wrap">
 <header>

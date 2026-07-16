@@ -57,6 +57,7 @@ Claude Code 에서 세 줄이면 끝:
 - **점검표 = 평가 함수**: findings 는 상태가 아니라 매번 소스 실측하는 `check` 술어다.
 - **상류 단일 판정**: 콘텐츠 상수화·BOLD 게이트는 0단계에서 한 번만 판정하고, 하류는 플래그만 소비한다.
 - **값은 도출**: 고정 px 금지 — 간격은 base × 고정 배수, 폭은 단일 measure 토큰에서 도출한다.
+- **레퍼런스 차용(값만)**: 교체형 텔은 taxonomy-id 로 정량 코퍼스(Tailwind 간격·Radix 팔레트·WCAG 대비, 무키·무료 vendoring)에 결정적 조인해 snap 기준으로 쓴다. 구성·카피는 차용 금지, 프로젝트 자체 토큰이 최우선. 삭제형 텔은 레퍼런스 무관.
 - **BOLD 게이트**: 투박한 스타일 ∧ 저밀도일 때만 과감히 키우고, 아니면 순수 슬롭 제거만 한다. 매크로 여백의 무차별 확대는 금지.
 - **리덕티브**: 재설계가 아니라 삭제 > 축소 > 교체이며, 카피·정보·순서는 불가침이다.
 - **문제 층위 분리 진단**: 누락 시 규칙 → 점검표 → 집행 → 렌더 4층위로 갈라 원인을 확정한다.
@@ -71,9 +72,11 @@ Claude Code 에서 세 줄이면 끝:
   references/inspection-areas.md    # 영역별 점검·집행 규칙 SSOT + findings 스키마(check 술어)
 scripts/
   scan-slop-signals.mjs             # 택소노미 detect 신호 스캐너 (js/ts/css/html/vue/svelte/astro)
-  build-findings-report.mjs         # findings-*.md → 자기완결 HTML 리포트 (로컬 서버 링크)
+  build-findings-report.mjs         # findings-*.md → 자기완결 HTML 리포트 (레퍼런스 블록 자동 조인)
+  fetch-references.mjs              # taxonomy-id → 정량 레퍼런스 조인 CLI (무키·무료·오프라인)
 src/data/
   aiSlopTaxonomyData.js             # AI-slop 택소노미 SSOT (버전·항목 수는 파일 헤더 changelog)
+  referenceData.js                  # 텔별 정량 레퍼런스 코퍼스 (Tailwind·Radix·WCAG vendoring)
 ```
 
 </details>
