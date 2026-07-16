@@ -1,0 +1,14 @@
+{
+  "name": "slopslap",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "slopslap plugin dev deps — 레퍼런스 코퍼스 생성용 실제 디자인시스템 패키지",
+  "scripts": {
+    "gen-references": "node scripts/gen-reference-data.mjs"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "@radix-ui/colors": "^3.0.0"
+  }
+}
