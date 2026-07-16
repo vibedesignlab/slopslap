@@ -53,7 +53,7 @@ sed -i '' 's#scripts/scan-slop-signals.mjs#${CLAUDE_PLUGIN_ROOT}/scripts/scan-sl
 
 ```json
 {
-  "name": "groovelb-slop",
+  "name": "vibedesignlab",
   "owner": { "name": "groovelb", "email": "groovelb@gmail.com" },
   "description": "AI-slop 제거 도구 모음",
   "plugins": [
@@ -75,7 +75,7 @@ git commit -m "release: slopslap v1.0.0 (plugin 패키징 + 경로 ${CLAUDE_PLUG
 git tag v1.0.0
 
 # GitHub 원격 연결 + 푸시
-git remote add origin https://github.com/groovelb/slopslap.git   # 레포명 예시
+git remote add origin https://github.com/vibedesignlab/slopslap.git   # 레포명 예시
 git push -u origin release/v1.0.0 v1.0.0
 # main 배포로 쓰려면 main 에 머지 후 push
 ```
@@ -83,8 +83,8 @@ git push -u origin release/v1.0.0 v1.0.0
 ## 5. 설치·사용 흐름 (사용자 관점)
 
 ```bash
-/plugin marketplace add groovelb/slopslap      # GitHub owner/repo
-/plugin install slopslap@groovelb-slop
+/plugin marketplace add vibedesignlab/slopslap      # GitHub owner/repo
+/plugin install slopslap@vibedesignlab
 /slopslap                                       # 또는 namespace: /slopslap:slopslap
 ```
 
@@ -100,7 +100,7 @@ claude --plugin-dir .                             # 로컬에서 plugin 로드 �
 ```bash
 # plugin.json 의 version 을 1.1.0 으로 수정 후
 git commit -am "release: v1.1.0" && git tag v1.1.0 && git push origin main v1.1.0
-# 사용자: /plugin update slopslap@groovelb-slop
+# 사용자: /plugin update slopslap@vibedesignlab
 ```
 
 ---

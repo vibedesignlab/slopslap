@@ -32,13 +32,13 @@ src/data/
 
 Claude Code 에서 세 줄이면 끝:
 ```
-/plugin marketplace add groovelb/slopslap
-/plugin install slopslap@groovelb-slop
+/plugin marketplace add vibedesignlab/slopslap
+/plugin install slopslap@vibedesignlab
 /slopslap
 ```
 로컬에서 직접 실행하려면: `claude --plugin-dir .` (또는 이 폴더에서 Claude Code 를 열면 `/slopslap` 자동 등록).
 
-업데이트: `/plugin update slopslap@groovelb-slop` · 배포·경로 치환(`${CLAUDE_PLUGIN_ROOT}`) 절차는 **[DEPLOY.md](DEPLOY.md)** 참조.
+업데이트: `/plugin update slopslap@vibedesignlab` · 배포·경로 치환(`${CLAUDE_PLUGIN_ROOT}`) 절차는 **[DEPLOY.md](DEPLOY.md)** 참조.
 
 ## 사용법
 
