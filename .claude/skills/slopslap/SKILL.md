@@ -72,6 +72,18 @@ description: 대상 화면(스택 불문)의 AI-slop 을 문답 없이 걷어내
 - **결과는 로컬 링크로 먼저**: 점검 리포트(2단계)·before/after(5단계)는 `http://localhost:<포트>` 로컬 서버 링크로 **선제 제시**. 아티팩트·브라우저 자동실행·되묻기 금지.
 - em-dash(U+2014) 0건 (SSOT 원문 인용부 예외).
 
+## transform 모드 (Plan B — 점검 결과 → 실측 레퍼런스 매트릭스 → 과감한 전환)
+
+기본은 **reductive**(위 파이프라인, 삭제>축소>교체). 사용자가 "과감히 바꿔줘"·"transform"·"재설계급으로" 를 원하면 **transform 모드**로 전환한다. 차이는 집행 기준이 대상 자체 도출값이 아니라 **실측 레퍼런스 매트릭스의 방향 조합**이라는 것.
+
+- **매트릭스 소스**: `${CLAUDE_PLUGIN_ROOT}/src/data/referenceMatrix/` — 실제 우수 사이트(Linear·Stripe·Apple·Basecamp 등)를 헤드리스 렌더해 뽑은 실측 contract(팔레트·타입스케일·간격·measure·폰트역할), styleTag 로 태깅. 손 타이핑 아님. 조회: `node ${CLAUDE_PLUGIN_ROOT}/scripts/fetch-answer.mjs <tell> [--style <styleTag>] --json`, 스타일 목록 `--styles`, 방향 한 벌 `--direction <styleTag>`.
+- **0.5단계 방향 확정(상류 단일 판단)**: 점검 후, 대상의 콘텐츠·컨셉(무슨 제품인가)·BOLD 플래그에서 **styleTag 방향 1개를 도출**한다(회피가 아니라 콘텐츠-양성 근거로 — 택소노미 계약). `--direction <styleTag>` 로 그 방향의 전 영역 contract 한 벌을 받아 하류 집행자 전원에게 **같은 방향**으로 배포. 이게 파편 수정이 아닌 일관 전환의 핵심.
+- **집행**: 각 영역 집행자는 그 방향 contract 의 자기 슬라이스를 snap 기준으로: 간격→spacingLadder(노이즈 클린 후), 타입→typeScale+ratio, 색→palette(무지개 제거·중립 램프+accent), 폰트→fontRoles, 폭→measure. **원시 스케일은 근접값 클린 후 모듈러 사다리로 도출**해 적용.
+- **불가침 유지**: 재설계라도 카피·정보·순서·이미지 콘텐츠는 보존(transform ≠ 콘텐츠 변경). em-dash·존댓말 등 카피 결함은 범위 밖.
+- **median 가드**: 스타일이 다른 두 대상을 돌리면 두 결과가 서로 달라야 정상. 같으면 방향 도출이 콘텐츠를 안 보고 획일 적용한 것(레드팀 위반).
+
+상세 스키마·레드팀은 `references/matrix-schema.md`.
+
 ## 비대화형 원칙
 slopslap = **비대화형·병렬·정적** 파이프라인(빠르고 기계적). 애매 항목은 묻지 말고 propose(리포트에 노출). 판단이 크게 갈리는 재설계급 결정(콘텐츠 의도 인터뷰가 필요한 수준)이면 이 스킬 범위 밖 — 사용자에게 알리고 별도 처리한다.
 

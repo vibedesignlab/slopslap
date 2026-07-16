@@ -1,0 +1,1074 @@
+[
+  {
+    "id": "apple-com",
+    "styleTag": "refined-minimal",
+    "sourceUrl": "https://www.apple.com/",
+    "shot": "shots/apple-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        12,
+        14,
+        17,
+        21,
+        24,
+        28,
+        40,
+        56
+      ],
+      "typeRatio": 1.235,
+      "spacingLadder_px": [
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        17,
+        40,
+        53,
+        84
+      ],
+      "fontRoles": [
+        "SF Pro Text",
+        "SF Pro Display",
+        "SF Pro KR"
+      ],
+      "palette": {
+        "textColors": [
+          "#333336",
+          "#000000",
+          "#6e6e73",
+          "#f5f5f7",
+          "#000000",
+          "#1d1d1f",
+          "#000000",
+          "#000000"
+        ],
+        "bgColors": [
+          "#f5f5f7",
+          "#000000",
+          "#ffffff",
+          "#0071e3",
+          "#fafafc",
+          "#1d1d1f"
+        ],
+        "bodyBg": "#ffffff"
+      },
+      "measure_px": [
+        1024,
+        430,
+        570,
+        980
+      ]
+    }
+  },
+  {
+    "id": "arc-net",
+    "styleTag": "playful-organic",
+    "sourceUrl": "https://arc.net/",
+    "shot": "shots/arc-net.jpg",
+    "contract": {
+      "typeScale_px": [
+        12,
+        13,
+        14,
+        16,
+        17,
+        20,
+        24,
+        28,
+        36,
+        40,
+        46
+      ],
+      "typeRatio": 1.167,
+      "spacingLadder_px": [
+        2,
+        3,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        20,
+        24,
+        25,
+        32,
+        37,
+        43,
+        48,
+        128
+      ],
+      "fontRoles": [
+        "Marlin Soft SQ",
+        "InterVariable",
+        "ABC Favorit Mono",
+        "-apple-system"
+      ],
+      "palette": {
+        "textColors": [
+          "#3139fb",
+          "#fffcec",
+          "#696969",
+          "#ffffff",
+          "#2702c2",
+          "#000000",
+          "#000000",
+          "#fffadd"
+        ],
+        "bgColors": [
+          "#ffffff",
+          "#3139fb",
+          "#fffcec",
+          "#000000",
+          "#2702c2"
+        ],
+        "bodyBg": "#fffcec"
+      },
+      "measure_px": [
+        900,
+        1344,
+        1400
+      ]
+    }
+  },
+  {
+    "id": "basecamp-com",
+    "styleTag": "classic-editorial",
+    "sourceUrl": "https://basecamp.com/",
+    "shot": "shots/basecamp-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        13,
+        15,
+        17,
+        19,
+        27,
+        38,
+        42
+      ],
+      "typeRatio": 1.133,
+      "spacingLadder_px": [
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        20,
+        21,
+        23,
+        26,
+        30,
+        38,
+        46,
+        91
+      ],
+      "fontRoles": [
+        "Graphik"
+      ],
+      "palette": {
+        "textColors": [],
+        "bgColors": [],
+        "bodyBg": null
+      },
+      "measure_px": []
+    }
+  },
+  {
+    "id": "clerk-com",
+    "styleTag": "clean-light",
+    "sourceUrl": "https://clerk.com/",
+    "shot": "shots/clerk-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        32,
+        64
+      ],
+      "typeRatio": 1.071,
+      "spacingLadder_px": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        8,
+        10,
+        12,
+        14,
+        15,
+        16,
+        20,
+        24,
+        32,
+        40,
+        48
+      ],
+      "fontRoles": [
+        "ui-sans-serif",
+        "geistNumbers",
+        "soehneMono"
+      ],
+      "palette": {
+        "textColors": [
+          "#131316",
+          "#747686",
+          "#000000",
+          "#ffffff",
+          "#5e5f6e",
+          "#9394a1",
+          "#b7b8c2",
+          "#696a78"
+        ],
+        "bgColors": [
+          "#ffffff",
+          "#2f3037",
+          "#f7f7f8",
+          "#131316",
+          "#5e5f6e",
+          "#212126"
+        ],
+        "bodyBg": "#f7f7f8"
+      },
+      "measure_px": [
+        1280,
+        672,
+        576
+      ]
+    }
+  },
+  {
+    "id": "framer-com",
+    "styleTag": "bold-design",
+    "sourceUrl": "https://www.framer.com/",
+    "shot": "shots/framer-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        6,
+        7,
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18,
+        20,
+        22,
+        44,
+        54
+      ],
+      "typeRatio": 1.111,
+      "spacingLadder_px": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        15,
+        20,
+        25,
+        30,
+        40,
+        120
+      ],
+      "fontRoles": [
+        "Inter",
+        "Inter Variable",
+        "Input Mono Regular",
+        "GT Walsheim Medium"
+      ],
+      "palette": {
+        "textColors": [
+          "#999999",
+          "#ffffff",
+          "#ffffff",
+          "#666666",
+          "#00bb88",
+          "#ffffff",
+          "#cccccc",
+          "#0099ff"
+        ],
+        "bgColors": [
+          "#000000",
+          "#242424",
+          "#ffffff",
+          "#ffffff",
+          "#111111",
+          "#1e1e1e"
+        ],
+        "bodyBg": "#000000"
+      },
+      "measure_px": [
+        1200,
+        660,
+        1000
+      ]
+    }
+  },
+  {
+    "id": "linear-app",
+    "styleTag": "tech-dark",
+    "sourceUrl": "https://linear.app/",
+    "shot": "shots/linear-app.jpg",
+    "contract": {
+      "typeScale_px": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20,
+        24,
+        32,
+        48,
+        64
+      ],
+      "typeRatio": 1.111,
+      "spacingLadder_px": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        12,
+        15,
+        16,
+        19,
+        20,
+        22,
+        24,
+        32,
+        48,
+        128
+      ],
+      "fontRoles": [
+        "Inter Variable",
+        "Berkeley Mono"
+      ],
+      "palette": {
+        "textColors": [
+          "#62666d",
+          "#8a8f98",
+          "#d0d6e0",
+          "#e2e4e7",
+          "#f79ce0",
+          "#f7f8f8",
+          "#f7bf8b",
+          "#ffdf9f"
+        ],
+        "bgColors": [
+          "#ffffff",
+          "#ffffff",
+          "#00ff05",
+          "#08090a",
+          "#ffffff",
+          "#0f1011"
+        ],
+        "bodyBg": "#08090a"
+      },
+      "measure_px": [
+        542,
+        566
+      ]
+    }
+  },
+  {
+    "id": "mailchimp-com",
+    "styleTag": "playful-illustrative",
+    "sourceUrl": "https://mailchimp.com/",
+    "shot": "shots/mailchimp-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        20,
+        24,
+        32,
+        40,
+        48,
+        64
+      ],
+      "typeRatio": 1.25,
+      "spacingLadder_px": [
+        2,
+        4,
+        5,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        20,
+        24,
+        32,
+        40,
+        48,
+        64,
+        80
+      ],
+      "fontRoles": [
+        "Graphik Web",
+        "Means Web",
+        "Arial"
+      ],
+      "palette": {
+        "textColors": [
+          "#231e15",
+          "#000000",
+          "#ffffff",
+          "#004e56",
+          "#403b3b",
+          "#231e15",
+          "#ffe01b",
+          "#241c15"
+        ],
+        "bgColors": [
+          "#f0f4f6",
+          "#ffffff",
+          "#ffe01b",
+          "#231e15",
+          "#f5f5f5"
+        ],
+        "bodyBg": "#ffffff"
+      },
+      "measure_px": [
+        1280,
+        960
+      ]
+    }
+  },
+  {
+    "id": "notion-so",
+    "styleTag": "friendly-minimal",
+    "sourceUrl": "https://www.notion.so/",
+    "shot": "shots/notion-so.jpg",
+    "contract": {
+      "typeScale_px": [
+        12,
+        14,
+        16,
+        20,
+        22,
+        26,
+        32,
+        54,
+        72,
+        96
+      ],
+      "typeRatio": 1.25,
+      "spacingLadder_px": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        12,
+        14,
+        16,
+        20,
+        24,
+        28,
+        32,
+        36,
+        64,
+        80
+      ],
+      "fontRoles": [
+        "NotionInter",
+        "Lyon Text"
+      ],
+      "palette": {
+        "textColors": [
+          "#000000",
+          "#000000",
+          "#000000",
+          "#615d59",
+          "#000000",
+          "#ffffff",
+          "#0075de",
+          "#005bab"
+        ],
+        "bgColors": [
+          "#ffffff",
+          "#f6f5f4",
+          "#000000",
+          "#0075de",
+          "#62aef0"
+        ],
+        "bodyBg": "#ffffff"
+      },
+      "measure_px": [
+        826,
+        892,
+        1252
+      ]
+    }
+  },
+  {
+    "id": "pitch-com",
+    "styleTag": "clean-light",
+    "sourceUrl": "https://pitch.com/",
+    "shot": "shots/pitch-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        14,
+        16,
+        20,
+        28,
+        32,
+        48,
+        60,
+        64,
+        92,
+        180
+      ],
+      "typeRatio": 1.25,
+      "spacingLadder_px": [
+        4,
+        8,
+        10,
+        11,
+        12,
+        16,
+        20,
+        24,
+        32,
+        40,
+        48,
+        52,
+        64,
+        72,
+        80,
+        120
+      ],
+      "fontRoles": [
+        "Mark Pro Bold",
+        "Eina 03 Regular",
+        "Eina 03 Bold",
+        "Space Mono"
+      ],
+      "palette": {
+        "textColors": [
+          "#0c021c",
+          "#ffffff",
+          "#5318eb",
+          "#363636",
+          "#c6a5ff",
+          "#666666"
+        ],
+        "bgColors": [
+          "#ffffff",
+          "#5318eb",
+          "#0c021c",
+          "#280f62",
+          "#ebe3fe",
+          "#f6f6f6"
+        ],
+        "bodyBg": "#ffffff"
+      },
+      "measure_px": [
+        1224,
+        447,
+        550
+      ]
+    }
+  },
+  {
+    "id": "posthog-com",
+    "styleTag": "playful-brutalist",
+    "sourceUrl": "https://posthog.com/",
+    "shot": "shots/posthog-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        12,
+        13,
+        14,
+        15,
+        18,
+        19,
+        20,
+        21,
+        24,
+        36
+      ],
+      "typeRatio": 1.071,
+      "spacingLadder_px": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        9,
+        10,
+        12,
+        14,
+        16,
+        17,
+        20,
+        24,
+        32,
+        34,
+        64
+      ],
+      "fontRoles": [
+        "Open Runde",
+        "IBM Plex Sans Variable",
+        "Source Code Pro"
+      ],
+      "palette": {
+        "textColors": [
+          "#4d4f46",
+          "#374151",
+          "#111827",
+          "#65675e",
+          "#23251d",
+          "#000000",
+          "#9ea096",
+          "#ffffff"
+        ],
+        "bgColors": [
+          "#e1d7c2",
+          "#eeefe9",
+          "#ffffff",
+          "#f54e00",
+          "#eb9d2a",
+          "#cd8407"
+        ],
+        "bodyBg": "#eeefe9"
+      },
+      "measure_px": [
+        896,
+        900,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "railway-com",
+    "styleTag": "tech-dark",
+    "sourceUrl": "https://railway.com/",
+    "shot": "shots/railway-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        12,
+        13,
+        14,
+        16,
+        18,
+        20,
+        36,
+        40,
+        54
+      ],
+      "typeRatio": 1.143,
+      "spacingLadder_px": [
+        4,
+        6,
+        8,
+        12,
+        16,
+        24,
+        32,
+        48,
+        64,
+        80,
+        96,
+        104,
+        128,
+        262
+      ],
+      "fontRoles": [
+        "Inter",
+        "JetBrains Mono",
+        "Helvetica",
+        "IBM Plex Serif"
+      ],
+      "palette": {
+        "textColors": [
+          "#f7f7f8",
+          "#ffffff",
+          "#878593",
+          "#ffffff",
+          "#dcdce0",
+          "#ffffff",
+          "#ffffff",
+          "#bf93ec"
+        ],
+        "bgColors": [
+          "#13111c",
+          "#59497a",
+          "#ffffff",
+          "#000000",
+          "#180d43",
+          "#553f83"
+        ],
+        "bodyBg": "#13111c"
+      },
+      "measure_px": [
+        1160,
+        550
+      ]
+    }
+  },
+  {
+    "id": "resend-com",
+    "styleTag": "minimal-mono",
+    "sourceUrl": "https://resend.com/",
+    "shot": "shots/resend-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        12,
+        14,
+        16,
+        18,
+        20,
+        24,
+        56,
+        77,
+        96
+      ],
+      "typeRatio": 1.2,
+      "spacingLadder_px": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        8,
+        10,
+        12,
+        16,
+        24,
+        32,
+        40,
+        48,
+        64,
+        80,
+        96
+      ],
+      "fontRoles": [
+        "commitMono",
+        "inter",
+        "aBCFavorit",
+        "Helvetica"
+      ],
+      "palette": {
+        "textColors": [
+          "#a0a0a0",
+          "#a1a4a5",
+          "#464a4d",
+          "#f1f7fe",
+          "#ebeced",
+          "#f0f0f0",
+          "#6c6c6c",
+          "#ababab"
+        ],
+        "bgColors": [
+          "#000000",
+          "#d6ebfd",
+          "#ffffff",
+          "#f0f0f0",
+          "#d8f4f6"
+        ],
+        "bodyBg": "#000000"
+      },
+      "measure_px": [
+        1280,
+        1024,
+        410
+      ]
+    }
+  },
+  {
+    "id": "stripe-com",
+    "styleTag": "clean-light",
+    "sourceUrl": "https://stripe.com/",
+    "shot": "shots/stripe-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        18,
+        20,
+        22,
+        26,
+        32,
+        48
+      ],
+      "typeRatio": 1.125,
+      "spacingLadder_px": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        11,
+        12,
+        14,
+        15,
+        16,
+        24,
+        32,
+        40,
+        48,
+        64,
+        96
+      ],
+      "fontRoles": [
+        "sohne-var"
+      ],
+      "palette": {
+        "textColors": [
+          "#50617a",
+          "#061b31",
+          "#64748d",
+          "#533afd",
+          "#ffffff",
+          "#273951",
+          "#3c4f69",
+          "#1a2c44"
+        ],
+        "bgColors": [
+          "#ffffff",
+          "#e5edf5",
+          "#f8fafd",
+          "#533afd",
+          "#e2e4ff"
+        ],
+        "bodyBg": null
+      },
+      "measure_px": [
+        1266,
+        818,
+        876
+      ]
+    }
+  },
+  {
+    "id": "supabase-com",
+    "styleTag": "tech-dark",
+    "sourceUrl": "https://supabase.com/",
+    "shot": "shots/supabase-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        22,
+        34,
+        46
+      ],
+      "typeRatio": 1.353,
+      "spacingLadder_px": [
+        1,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        20,
+        24,
+        32,
+        40,
+        48,
+        64,
+        80,
+        90,
+        96
+      ],
+      "fontRoles": [
+        "Inter",
+        "Source Code Pro",
+        "Manrope"
+      ],
+      "palette": {
+        "textColors": [
+          "#a0a0a0",
+          "#525252",
+          "#15593b",
+          "#6b35dc",
+          "#ffffff",
+          "#ffffff"
+        ],
+        "bgColors": [
+          "#000000"
+        ],
+        "bodyBg": null
+      },
+      "measure_px": [
+        1280,
+        576
+      ]
+    }
+  },
+  {
+    "id": "tailwindcss-com",
+    "styleTag": "tech-docs",
+    "sourceUrl": "https://tailwindcss.com/",
+    "shot": "shots/tailwindcss-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        20,
+        24,
+        30,
+        36,
+        40,
+        96
+      ],
+      "typeRatio": 1.143,
+      "spacingLadder_px": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        10,
+        12,
+        16,
+        24,
+        28,
+        32,
+        40,
+        44,
+        64,
+        160
+      ],
+      "fontRoles": [
+        "plexMono",
+        "inter"
+      ],
+      "palette": {
+        "textColors": [],
+        "bgColors": [
+          "#ffffff"
+        ],
+        "bodyBg": null
+      },
+      "measure_px": [
+        576,
+        768,
+        512
+      ]
+    }
+  },
+  {
+    "id": "vercel-com",
+    "styleTag": "minimal-mono",
+    "sourceUrl": "https://vercel.com/",
+    "shot": "shots/vercel-com.jpg",
+    "contract": {
+      "typeScale_px": [
+        8,
+        11,
+        12,
+        13,
+        14,
+        16,
+        20,
+        22,
+        24,
+        30,
+        56,
+        64
+      ],
+      "typeRatio": 1.143,
+      "spacingLadder_px": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        12,
+        14,
+        16,
+        20,
+        24,
+        32,
+        40,
+        44,
+        208
+      ],
+      "fontRoles": [
+        "GeistSans",
+        "Geist Mono"
+      ],
+      "palette": {
+        "textColors": [
+          "#171717",
+          "#666666",
+          "#4d4d4d",
+          "#8f8f8f",
+          "#ffffff",
+          "#7d7d7d",
+          "#297a3a"
+        ],
+        "bgColors": [
+          "#ffffff",
+          "#171717",
+          "#fafafa",
+          "#666666"
+        ],
+        "bodyBg": "#fafafa"
+      },
+      "measure_px": [
+        444,
+        673
+      ]
+    }
+  }
+]

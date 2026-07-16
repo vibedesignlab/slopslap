@@ -1,0 +1,24 @@
+{
+  "note": "교체형 tell × 섹션 × BOLD 셀 열거. Tier-1 = 3개 실회차(loopnote×2 등)에서 실제 발화한 고빈도 셀. C/D/E 는 페이지-전역이라 generic, B 는 섹션 구체값.",
+  "tiers": {
+    "tier1": [
+      { "cell": "unscaled-spacing-ladder__generic__off", "area": "C", "freq": "high", "answerFrom": "site-contract.spacingLadder_px" },
+      { "cell": "unscaled-spacing-ladder__generic__on", "area": "C", "freq": "med", "answerFrom": "site-contract.spacingLadder_px (bold 결)" },
+      { "cell": "unscaled-type-hierarchy__generic__off", "area": "D", "freq": "high", "answerFrom": "site-contract.typeScale_px+typeRatio" },
+      { "cell": "unscaled-type-hierarchy__generic__on", "area": "D", "freq": "med", "answerFrom": "site-contract.typeScale_px (bold 결)" },
+      { "cell": "oversized-display-type__generic__on", "area": "D", "freq": "med", "answerFrom": "site-contract 상단 rung" },
+      { "cell": "font-family-role-map__generic__off", "area": "D", "freq": "high", "answerFrom": "site-contract.fontRoles" },
+      { "cell": "decorative-semantic-color__generic__off", "area": "E", "freq": "high", "answerFrom": "site-contract.palette (accent 1+중립)" },
+      { "cell": "saturated-multicolor-palette__generic__off", "area": "E", "freq": "med", "answerFrom": "site-contract.palette" },
+      { "cell": "low-contrast-body__generic__off", "area": "E", "freq": "high", "answerFrom": "WCAG 임계 + site-contract 텍스트색" },
+      { "cell": "undisciplined-grid__hero__off", "area": "B", "freq": "high", "answerFrom": "section-gallery(hero) + gridRatios" },
+      { "cell": "undisciplined-grid__pricing__off", "area": "B", "freq": "med", "answerFrom": "section-gallery(pricing)" },
+      { "cell": "undisciplined-grid__features__off", "area": "B", "freq": "med", "answerFrom": "section-gallery(features)" }
+    ],
+    "tier2_deferred": [
+      "iridescent-palette", "purple-blue-gradient", "gradient-text", "monospace-body-aesthetic",
+      "default-equal-thirds__features", "layout-type-misfit", "undisciplined-grid__faq/footer/nav"
+    ]
+  },
+  "answerModel": "유닛 1개 = 실측 사이트 contract 1벌(palette+type+spacing+measure+fonts). 한 유닛이 C/D/E generic 셀 다수를 커버. styleTag 로 다양성. transform 시: 대상 컨셉→styleTag 방향 선택→그 방향 유닛들의 contract 를 전 영역이 공동 소비."
+}
