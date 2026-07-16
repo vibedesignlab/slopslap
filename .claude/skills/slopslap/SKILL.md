@@ -35,6 +35,7 @@ description: 대상 화면(스택 불문)의 AI-slop 을 문답 없이 걷어내
 - 대상 경로·스택·토큰 위치, 회차 폴더, **`BOLD=on/off` 플래그**(0단계 확정값 — B·C 집행자는 이 플래그만 보고 스케일업 여부 결정, 재판정 금지), SSOT 경로(`${CLAUDE_PLUGIN_ROOT}/src/data/aiSlopTaxonomyData.js`), 스캐너(`node ${CLAUDE_PLUGIN_ROOT}/scripts/scan-slop-signals.mjs <경로> --json`)
 - **"references/inspection-areas.md 의 영역 <X> 절만 읽고, 그 규칙으로 대상을 정적으로 점검해 `findings-<X>.md` 를 스키마대로 써라."**
 - **정적/계산만** (CSS·DOM 읽기, hex 대비 수학, 그리드 fr·간격 리터럴, 폰트 역할맵, 100vh 콘텐츠 높이 합산). **playwright/브라우저 금지**(싱글턴 충돌 + 점검엔 불필요 - 렌더 없던 시절 방식). read-only.
+- **레퍼런스 조회·삽입(교체형 텔에 한함)**: 각 점검자는 자기가 쓴 finding 이 교체형(간격 사다리·타입 스케일·팔레트 램프·measure·대비)이면 그 finding 의 taxonomy-id 로 `node ${CLAUDE_PLUGIN_ROOT}/scripts/fetch-references.mjs <id> --json` 를 호출해, 반환된 정량 target 을 **그 항목의 처방·검증(check)에 snap 기준값으로 박아 넣는다**(예: "16×1.25^n 사다리로 snap, check=고유 크기 수 ≤ rung 수"). 이렇게 해야 레퍼런스가 리포트 참고가 아니라 **집행이 실제로 적용하는 값**으로 하류에 전달된다. 삭제형 텔은 조회 안 함(차용값 없음). 프로젝트 자체 토큰(config·:root·Figma 변수) 발견 시 그게 최우선, 코퍼스는 폴백.
 - findings 는 영역별 **별도 파일** → 병렬 쓰기 안전.
 
 ### 2. 리포트 발행 (HTML + 로컬 링크)
