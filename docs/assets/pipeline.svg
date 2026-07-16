@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560">
+  <rect width="1280" height="560" fill="#FAF7F0"/>
+  <g font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif" fill="#0A0A0A">
+    <text x="30" y="42" font-size="24" font-weight="900" letter-spacing="3">THE PIPELINE — INSPECT IN PARALLEL, SLAP IN ORDER</text>
+
+    <rect x="36" y="206" width="150" height="120" rx="0" fill="#0A0A0A"/>
+    <rect x="30" y="200" width="150" height="120" rx="0" fill="#FAF7F0" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="105" y="237" font-size="30" font-weight="900" text-anchor="middle">0</text>
+    <text x="105" y="264" font-size="20" font-weight="900" text-anchor="middle">GATE</text>
+    <text x="105" y="290" font-size="13" font-weight="700" text-anchor="middle">상수화·BOLD</text>
+    <text x="105" y="306" font-size="13" font-weight="700" text-anchor="middle">판정</text>
+
+    <text x="320" y="84" font-size="14" font-weight="800" text-anchor="middle">5 AGENTS IN PARALLEL</text>
+
+    <path d="M 180 260 H 220 V 128 H 248" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="260,128 248,122 248,134"/>
+    <path d="M 180 260 H 220 V 198 H 248" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="260,198 248,192 248,204"/>
+    <path d="M 180 260 H 220 V 268 H 248" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="260,268 248,262 248,274"/>
+    <path d="M 180 260 H 220 V 338 H 248" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="260,338 248,332 248,344"/>
+    <path d="M 180 260 H 220 V 408 H 248" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="260,408 248,402 248,414"/>
+
+    <rect x="266" y="106" width="120" height="56" rx="0" fill="#0A0A0A"/>
+    <rect x="260" y="100" width="120" height="56" rx="0" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="320" y="134" font-size="14" font-weight="900" text-anchor="middle">A OVERLINE</text>
+
+    <rect x="266" y="176" width="120" height="56" rx="0" fill="#0A0A0A"/>
+    <rect x="260" y="170" width="120" height="56" rx="0" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="320" y="204" font-size="14" font-weight="900" text-anchor="middle">B LAYOUT</text>
+
+    <rect x="266" y="246" width="120" height="56" rx="0" fill="#0A0A0A"/>
+    <rect x="260" y="240" width="120" height="56" rx="0" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="320" y="274" font-size="14" font-weight="900" text-anchor="middle">C SPACING</text>
+
+    <rect x="266" y="316" width="120" height="56" rx="0" fill="#0A0A0A"/>
+    <rect x="260" y="310" width="120" height="56" rx="0" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="320" y="344" font-size="14" font-weight="900" text-anchor="middle">D TYPE</text>
+
+    <rect x="266" y="386" width="120" height="56" rx="0" fill="#0A0A0A"/>
+    <rect x="260" y="380" width="120" height="56" rx="0" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="320" y="414" font-size="14" font-weight="900" text-anchor="middle">E COLOR</text>
+
+    <path d="M 380 128 H 425 V 198 H 458" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="470,198 458,192 458,204"/>
+    <path d="M 380 198 H 425 V 219 H 458" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="470,219 458,213 458,225"/>
+    <path d="M 380 268 H 425 V 240 H 458" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="470,240 458,234 458,246"/>
+    <path d="M 380 338 H 425 V 261 H 458" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="470,261 458,255 458,267"/>
+    <path d="M 380 408 H 425 V 282 H 458" fill="none" stroke="#0A0A0A" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="470,282 458,276 458,288"/>
+
+    <rect x="476" y="186" width="170" height="120" rx="0" fill="#0A0A0A"/>
+    <rect x="470" y="180" width="170" height="120" rx="0" fill="#FAF7F0" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="555" y="217" font-size="30" font-weight="900" text-anchor="middle">2</text>
+    <text x="555" y="244" font-size="20" font-weight="900" text-anchor="middle">FINDINGS</text>
+    <text x="555" y="278" font-size="13" font-weight="700" text-anchor="middle">check 술어 점검표</text>
+
+    <path d="M 640 240 H 688" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+    <polygon points="700,240 688,234 688,246"/>
+
+    <rect x="706" y="186" width="170" height="120" rx="0" fill="#0A0A0A"/>
+    <rect x="700" y="180" width="170" height="120" rx="0" fill="#FAF7F0" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="785" y="217" font-size="30" font-weight="900" text-anchor="middle">3</text>
+    <text x="785" y="244" font-size="20" font-weight="900" text-anchor="middle">ENFORCE</text>
+    <text x="785" y="278" font-size="13" font-weight="700" text-anchor="middle">check 실측 → 수정</text>
+
+    <path d="M 870 240 H 902" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+    <polygon points="914,240 902,234 902,246"/>
+
+    <rect x="920" y="186" width="170" height="120" rx="0" fill="#0A0A0A"/>
+    <rect x="914" y="180" width="170" height="120" rx="0" fill="#FAF7F0" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="999" y="217" font-size="30" font-weight="900" text-anchor="middle">4</text>
+    <text x="999" y="244" font-size="20" font-weight="900" text-anchor="middle">RE-CHECK</text>
+    <text x="999" y="278" font-size="13" font-weight="700" text-anchor="middle">같은 check 재실측</text>
+
+    <path d="M 999 300 V 350 H 785 V 312" fill="none" stroke="#FF3B30" stroke-width="4" stroke-linejoin="miter"/>
+    <polygon points="785,300 779,312 791,312" fill="#FF3B30"/>
+    <text x="892" y="374" font-size="13" font-weight="800" text-anchor="middle" fill="#FF3B30">FAIL → 재집행</text>
+
+    <path d="M 1084 240 H 1112" fill="none" stroke="#0A0A0A" stroke-width="4"/>
+    <polygon points="1124,240 1112,234 1112,246"/>
+
+    <rect x="1130" y="186" width="150" height="120" rx="0" fill="#0A0A0A"/>
+    <rect x="1124" y="180" width="150" height="120" rx="0" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="1199" y="217" font-size="30" font-weight="900" text-anchor="middle">5</text>
+    <text x="1199" y="244" font-size="20" font-weight="900" text-anchor="middle">RENDER ×1</text>
+    <text x="1199" y="273" font-size="13" font-weight="700" text-anchor="middle">before/after</text>
+    <text x="1199" y="290" font-size="13" font-weight="700" text-anchor="middle">캡처</text>
+
+    <rect x="454" y="462" width="680" height="54" rx="0" fill="#0A0A0A"/>
+    <rect x="450" y="458" width="680" height="54" rx="0" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="790" y="493" font-size="17" font-weight="800" text-anchor="middle">점검표 = 평가 함수 · '완료' 텍스트를 믿지 않고 매번 소스에서 실측한다</text>
+  </g>
+</svg>

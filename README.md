@@ -1,10 +1,69 @@
-# slopslap
+![slopslap](docs/assets/hero.svg)
 
-> **Slap the slop out of your UI.**
+> **Slap the slop out of your UI.** — a Claude Code plugin by [vibedesignlab](https://vibedesignlab.net)
 
-대상 화면(스택 불문)의 AI-slop 을 문답 없이 병렬-점검 파이프라인으로 걷어내는 **Claude Code 스킬(plugin)**. AI 가 만든 티(반사적 오버라인·규율 없는 그리드·과밀 간격·장식 이탤릭·무지개 색)를 5개 영역 서브에이전트로 병렬 점검하고 기계적으로 제거한다.
+AI가 짠 UI, 어딘가 촌스러운데 정확히 뭐가 문제인지 짚어내기 어려울 때가 있다. 반사적 오버라인, 규율 없는 그리드, 과밀한 간격, 장식 이탤릭, 무지개 팔레트 — 흔한 슬롭 신호는 대개 이 다섯 가지로 좁혀진다. slopslap 은 문답 없이 병렬 점검 파이프라인으로 그 신호를 걷어낸다.
 
-## 구조
+## The Evidence
+
+![before / after](docs/assets/before-after.png)
+
+실제 점검 대상의 before/after. 리터치 없음.
+
+## The Crimes
+
+![the 5 crimes](docs/assets/five-sins.svg)
+
+- **A · 오버라인** — 제목마다 반사적으로 붙는 소형 라벨 남발
+- **B · 레이아웃·컨테이너·폭** — 규율 없는 그리드, 고정 px, 컨테이너 남발
+- **C · 간격** — 과밀·관성 간격, 죽은 여백
+- **D · 타이포** — 장식 이탤릭, 근거 없는 스케일
+- **E · 색** — 근거 없는 무지개 팔레트
+
+## The Trial
+
+![pipeline](docs/assets/pipeline.svg)
+
+| 단계 | 내용 |
+|---|---|
+| **0. 선행 판정** | 콘텐츠 상수화 + BOLD 게이트 판정 → 플래그로 하류 전달 |
+| **1. 병렬 정적 점검** | A~E 5개 영역 동시 점검 → `findings-<X>.md`, 항목마다 `check` 술어 |
+| **2. 리포트** | findings 합본 HTML + 로컬 링크 발행 |
+| **3. 순차 집행** | A→B→C→D→E 순서로 `check` 미충족 항목만 수정 |
+| **4. 병렬 재점검** | 같은 `check` 재실측 → 누락 시 해당 영역만 재집행 |
+| **5. 렌더 1회** | before/after 헤드리스 캡처로 체감 확인 |
+
+## The Difference
+
+![findings = eval function](docs/assets/eval-function.svg)
+
+다른 도구는 "완료" 텍스트를 그대로 믿는다. slopslap 은 안 믿는다. findings 의 각 항목은 상태 문구가 아니라 소스에서 참/거짓을 실측하는 `check` 술어이고, 집행과 재점검은 매번 그 술어를 다시 계산한다 — 오기록에 속아 넘어가는 실패를 구조적으로 차단한다.
+
+## Install
+
+Claude Code 에서 세 줄이면 끝:
+```
+/plugin marketplace add vibedesignlab/slopslap
+/plugin install slopslap@vibedesignlab
+/slopslap
+```
+로컬에서 직접 실행하려면: `claude --plugin-dir .` (또는 이 폴더에서 Claude Code 를 열면 `/slopslap` 자동 등록).
+
+업데이트: `/plugin update slopslap@vibedesignlab` · 배포·경로 치환(`${CLAUDE_PLUGIN_ROOT}`) 절차는 **[DEPLOY.md](DEPLOY.md)** 참조.
+
+## Principles
+
+- **컨텍스트 드롭 방지**: 영역별 서브에이전트 격리 + findings 파일 외부화로, 한 에이전트가 전 규칙을 들면 생기는 조용한 누락을 막는다.
+- **점검표 = 평가 함수**: findings 는 상태가 아니라 매번 소스 실측하는 `check` 술어다.
+- **상류 단일 판정**: 콘텐츠 상수화·BOLD 게이트는 0단계에서 한 번만 판정하고, 하류는 플래그만 소비한다.
+- **값은 도출**: 고정 px 금지 — 간격은 base × 고정 배수, 폭은 단일 measure 토큰에서 도출한다.
+- **BOLD 게이트**: 투박한 스타일 ∧ 저밀도일 때만 과감히 키우고, 아니면 순수 슬롭 제거만 한다. 매크로 여백의 무차별 확대는 금지.
+- **리덕티브**: 재설계가 아니라 삭제 > 축소 > 교체이며, 카피·정보·순서는 불가침이다.
+- **문제 층위 분리 진단**: 누락 시 규칙 → 점검표 → 집행 → 렌더 4층위로 갈라 원인을 확정한다.
+- 스킬은 이 프로젝트에 귀속되며 전역 등록은 아니다. 점검은 정적 계산으로 이뤄지고, 브라우저는 5단계 렌더에서만 쓴다.
+
+<details>
+<summary>Repo structure</summary>
 
 ```
 .claude/skills/slopslap/
@@ -17,46 +76,8 @@ src/data/
   aiSlopTaxonomyData.js             # AI-slop 택소노미 SSOT (버전·항목 수는 파일 헤더 changelog)
 ```
 
-## 파이프라인 (6단계)
+</details>
 
-| 단계 | 내용 |
-|---|---|
-| **0. 선행 판정 (1회)** | 콘텐츠 상수화(반복 시리즈 배열 식별) + BOLD 게이트(투박한 스타일 ∧ 저밀도) → 플래그로 하류 전달 |
-| **1. 병렬 정적 점검** | 5개 영역(A 오버라인 · B 레이아웃·컨테이너·폭 · C 간격 · D 타이포 · E 색) 동시 → `findings-<X>.md`, 각 항목에 `check` 술어 |
-| **2. 리포트** | findings 합본 HTML + `http://localhost:<포트>/report/` 로컬 링크 |
-| **3. 순차 집행** | A→B→C→D→E 순서, 집행자가 `check` 를 소스 실측 → 미충족만 수정 (커밋 단위) |
-| **4. 병렬 재점검** | 같은 `check` 재실측 → 누락 시 그 영역만 재집행 |
-| **5. 렌더 1회** | before/after 헤드리스 캡처로 체감 확인 |
+---
 
-## 설치
-
-Claude Code 에서 세 줄이면 끝:
-```
-/plugin marketplace add vibedesignlab/slopslap
-/plugin install slopslap@vibedesignlab
-/slopslap
-```
-로컬에서 직접 실행하려면: `claude --plugin-dir .` (또는 이 폴더에서 Claude Code 를 열면 `/slopslap` 자동 등록).
-
-업데이트: `/plugin update slopslap@vibedesignlab` · 배포·경로 치환(`${CLAUDE_PLUGIN_ROOT}`) 절차는 **[DEPLOY.md](DEPLOY.md)** 참조.
-
-## 사용법
-
-- 점검+수정: `"이 화면 슬롭 점검하고 고쳐"` 또는 `/slopslap <대상 경로>` → 파이프라인 실행
-- 스캐너 단독: `node scripts/scan-slop-signals.mjs <경로> --json`
-- 점검 대상은 임의 경로(정적 HTML+CSS / Next·MUI / Tailwind / Vue 등)를 지정한다. **점검 예제는 이 레포에 두지 않는다** — 격리 작업본에서 돌린다.
-
-## 핵심 원칙 (검증 포인트)
-
-- **컨텍스트 용량 드롭 방지**: 한 에이전트가 전 규칙을 들면 묻힌 규칙이 조용히 누락된다(실증) → 영역별 서브에이전트 격리 + findings 파일 외부화 + 지휘자는 오케스트레이션만.
-- **점검표 = 평가 함수**: findings 항목은 "완료" 상태를 적지 않고 소스에서 참/거짓 실측할 `check` 술어를 가진다. 집행·재점검이 매번 소스에서 계산 → "완료" 오기록에 속아 스킵하는 실패 차단.
-- **상류 단일 판정**: 콘텐츠 상수화·BOLD 게이트는 0단계에서 1회, 하류 영역은 플래그만 소비(판단 중복·불일치 방지).
-- **값은 도출**: 고정 px 금지. 간격은 대상서 도출한 base × 고정 배수, 폭은 단일 measure 토큰(하모닉 배수).
-- **BOLD 게이트**: 투박한 스타일 어휘(두꺼운 border·hard-shadow·flat 원색·초대형 볼드) ∧ 저밀도(관대 — AI 는 불필요하게 고밀도로 채우므로)일 때만 요소·간격을 과감히 ↑. 아니면 순수 슬롭 제거. 매크로 여백 무차별 확대 금지(죽은 void).
-- **리덕티브**: 재설계가 아니라 삭제 > 축소 > 교체. 카피·정보·순서 불가침. 원본 파일 미변경(격리 작업본에서 수정).
-- **문제 층위 분리 진단**: 누락이 생기면 규칙 → 점검표(check) → 집행 → 렌더 4층위로 갈라 어디서 터졌는지 확정한다.
-
-## 주의
-
-- 스킬은 이 프로젝트에 귀속(전역 등록 아님).
-- 점검은 정적 계산(playwright 없이), 브라우저는 5단계 렌더에서만.
+Made with 🖐️ by [vibedesignlab](https://vibedesignlab.net) · MIT License

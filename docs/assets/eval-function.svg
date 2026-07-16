@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="380" viewBox="0 0 1280 380">
+  <rect width="1280" height="380" fill="#FAF7F0"/>
+  <g font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif">
+    <text x="40" y="42" fill="#0A0A0A" font-size="24" font-weight="900" letter-spacing="3">FINDINGS = EVAL FUNCTION, NOT A TODO LIST</text>
+
+    <rect x="46" y="86" width="560" height="250" fill="#0A0A0A" rx="0"/>
+    <rect x="40" y="80" width="560" height="250" fill="#FAF7F0" stroke="#0A0A0A" stroke-width="4" rx="0"/>
+    <rect x="64" y="104" width="40" height="40" fill="#FF3B30" stroke="#0A0A0A" stroke-width="4" rx="0"/>
+    <text x="84" y="125" fill="#FAF7F0" font-size="26" font-weight="900" text-anchor="middle" dominant-baseline="middle">✗</text>
+    <text x="122" y="130" fill="#0A0A0A" font-size="20" font-weight="900">다른 도구들</text>
+
+    <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="16" font-weight="700">
+      <text x="68" y="178" fill="#0A0A0A">☑ 오버라인 제거 — 완료</text>
+      <text x="68" y="210" fill="#0A0A0A">☑ 간격 정리 — 완료</text>
+      <text x="68" y="242" fill="#0A0A0A">☑ 스크롤바 색 — 완료   <tspan fill="#FF3B30">← 거짓말</tspan></text>
+    </g>
+    <text x="64" y="300" fill="#0A0A0A" font-size="14" font-weight="700">'완료' 텍스트를 그대로 믿는다 → 누락이 조용히 살아남는다</text>
+
+    <rect x="612" y="175" width="72" height="72" fill="#0A0A0A" rx="0"/>
+    <rect x="606" y="169" width="72" height="72" fill="#FFD400" stroke="#0A0A0A" stroke-width="4" rx="0"/>
+    <text x="642" y="207" fill="#0A0A0A" font-size="40" font-weight="900" text-anchor="middle" dominant-baseline="middle">VS</text>
+
+    <rect x="696" y="86" width="560" height="250" fill="#0A0A0A" rx="0"/>
+    <rect x="690" y="80" width="560" height="250" fill="#FFD400" stroke="#0A0A0A" stroke-width="4" rx="0"/>
+    <rect x="714" y="104" width="40" height="40" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4" rx="0"/>
+    <text x="734" y="125" fill="#FFD400" font-size="26" font-weight="900" text-anchor="middle" dominant-baseline="middle">✓</text>
+    <text x="772" y="130" fill="#0A0A0A" font-size="20" font-weight="900">SLOPSLAP</text>
+
+    <rect x="714" y="152" width="512" height="110" fill="#0A0A0A" rx="0"/>
+    <g font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" font-weight="700">
+      <text x="732" y="177" fill="#FAF7F0">$ check: grep -c 'letter-spacing' hero.css</text>
+      <text x="732" y="202" fill="#FAF7F0">  expect 0 → actual 0   <tspan fill="#FFD400">PASS</tspan></text>
+      <text x="732" y="227" fill="#FAF7F0">$ check: scrollbar-color == var(--ink)</text>
+      <text x="732" y="252" fill="#FAF7F0">  expect true → actual false   <tspan fill="#FF3B30">FAIL → 재집행</tspan></text>
+    </g>
+    <text x="714" y="300" fill="#0A0A0A" font-size="14" font-weight="700">check 술어를 매번 소스에서 실측한다</text>
+  </g>
+</svg>

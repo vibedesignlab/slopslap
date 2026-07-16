@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400">
+  <rect width="1280" height="400" fill="#FAF7F0"/>
+  <rect x="78" y="88" width="740" height="170" rx="0" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
+  <rect x="70" y="80" width="740" height="170" rx="0" fill="#FAF7F0" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="440" y="165" text-anchor="middle" dominant-baseline="middle" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="110" font-weight="900" letter-spacing="6" fill="#0A0A0A">SLOPSLAP</text>
+  <text x="80" y="304" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="4" fill="#0A0A0A">SLAP THE SLOP OUT OF YOUR UI.</text>
+  <polygon points="1048,68 1063.2,121.5 1097.7,77.9 1091.3,133.1 1139.9,106.1 1112.9,154.7 1168.1,148.3 1124.5,182.8 1178,198 1124.5,213.2 1168.1,247.7 1112.9,241.3 1139.9,289.9 1091.3,262.9 1097.7,318.1 1063.2,274.5 1048,328 1032.8,274.5 998.3,318.1 1004.7,262.9 956.1,289.9 983.1,241.3 927.9,247.7 971.5,213.2 918,198 971.5,182.8 927.9,148.3 983.1,154.7 956.1,106.1 1004.7,133.1 998.3,77.9 1032.8,121.5" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
+  <polygon points="1040,60 1055.2,113.5 1089.7,69.9 1083.3,125.1 1131.9,98.1 1104.9,146.7 1160.1,140.3 1116.5,174.8 1170,190 1116.5,205.2 1160.1,239.7 1104.9,233.3 1131.9,281.9 1083.3,254.9 1089.7,310.1 1055.2,266.5 1040,320 1024.8,266.5 990.3,310.1 996.7,254.9 948.1,281.9 975.1,233.3 919.9,239.7 963.5,205.2 910,190 963.5,174.8 919.9,140.3 975.1,146.7 948.1,98.1 996.7,125.1 990.3,69.9 1024.8,113.5" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="1040" y="192" text-anchor="middle" dominant-baseline="middle" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="40" font-weight="900" letter-spacing="2" fill="#0A0A0A">SLAP!</text>
+  <rect x="850" y="108" width="62" height="10" rx="0" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4" transform="rotate(-16 881 113)"/>
+  <rect x="840" y="266" width="72" height="10" rx="0" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4" transform="rotate(16 876 271)"/>
+  <rect x="1190" y="92" width="50" height="10" rx="0" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4" transform="rotate(18 1215 97)"/>
+  <rect x="52" y="334" width="370" height="44" rx="0" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="4"/>
+  <rect x="48" y="330" width="370" height="44" rx="0" fill="#FFD400" stroke="#0A0A0A" stroke-width="4"/>
+  <text x="64" y="352" dominant-baseline="middle" font-family="ui-sans-serif, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="800" letter-spacing="2" fill="#0A0A0A">MADE BY VIBEDESIGNLAB.NET</text>
+</svg>
