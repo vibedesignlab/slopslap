@@ -481,6 +481,71 @@ export const REFERENCE_DATA = {
     "area": "A",
     "principle": "장식용 all-caps eyebrow 삭제."
   },
+  "pill-eyebrow-badge": {
+    "applies": false,
+    "area": "A",
+    "principle": "pill eyebrow 배지 삭제. 차용값 없음."
+  },
+  "floating-gradient-orb": {
+    "applies": false,
+    "area": "A",
+    "principle": "플로팅 장식 오브 노드 삭제(1차 스윕)."
+  },
+  "octane-blob-neon": {
+    "applies": false,
+    "area": "A",
+    "principle": "네온 blob 장식 삭제."
+  },
+  "mesh-aurora-background": {
+    "applies": false,
+    "area": "A",
+    "principle": "mesh/aurora 장식 배경 제거."
+  },
+  "everywhere-glow": {
+    "applies": false,
+    "area": "A",
+    "principle": "전역 반복 글로우 제거(포컬 1개 예외)."
+  },
+  "glassmorphism-default": {
+    "applies": false,
+    "area": "A",
+    "principle": "글래스모피즘 표면 → 불투명 단색."
+  },
+  "ubiquitous-soft-shadow": {
+    "applies": false,
+    "area": "A",
+    "principle": "균일 soft shadow 남발 제거(figure-ground로)."
+  },
+  "gradient-text": {
+    "applies": false,
+    "area": "A",
+    "principle": "텍스트 그라디언트 → 단색."
+  },
+  "emoji-icon-navigation": {
+    "applies": false,
+    "area": "A",
+    "principle": "이모지 아이콘·네비 제거/실아이콘화."
+  },
+  "emoji-overuse": {
+    "applies": false,
+    "area": "A",
+    "principle": "장식 이모지 남발 제거."
+  },
+  "decorative-status-dots": {
+    "applies": false,
+    "area": "A",
+    "principle": "상태 무관 장식 도트 제거."
+  },
+  "sparkle-ai-branding": {
+    "applies": false,
+    "area": "A",
+    "principle": "AI 브랜딩 스파클(✨) 제거."
+  },
+  "meaningless-decorative-chart": {
+    "applies": false,
+    "area": "A",
+    "principle": "데이터 없는 장식 차트 제거."
+  },
   "undisciplined-grid": {
     "applies": false,
     "area": "B",
